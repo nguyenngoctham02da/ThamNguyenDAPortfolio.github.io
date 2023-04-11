@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic Page - Massively by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">SQL PROJECT</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">All of my projects</a></li>
+							<li class="active"><a href="SQL project.html">SQL project</a></li>
+							<!-- <li><a href="elements.html">Elements Reference</a></li> -->
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">April 25, 2017</span> -->
+									<h1>Data extraction<br />
+									using SQL Server</h1>
+									<p>In this project I use SQL Server to extract necessary data from Human Resource Database - which is a relational database</p>
+								</header>
+								<!-- data modeling -->
+								<p><b>Database Description</b></p>
+								<div class="image main"><img src="images/sql_diagram.png" alt="" /></div>
+								
+								<p>The data consists of 7 tables:</p>
+								<ul>
+									<li>JOB_HISTORY: includes information of employees who do not work in company any more.
+										<ul>
+											<li>EMPLOYEES_ID: employee identifier, unique for each employee.</li>
+											<li>START_DATE: the date that employee started working.</li>
+											<li>END_DATE:the date that employee stopped working. </li>
+											<li>JOB_ID: job identifier unique for each job.</li>
+											<li>DEPARTMENT_ID: department identifier, unique for each department.</li>
+										</ul>
+									</li>
+									<li>JOBS: includes information of jobs.
+										<ul>
+											<li>JOB_ID: job identifier unique for each job.</li>
+											<li>JOB_TITLE: name of jobs.</li>
+											<li>MIN_SALARY: smallest salary of that job.</li>
+											<li>MAX_SALARY: largest salary of that job.</li>
+										</ul>
+									</li>
+									<li>EMPLOYEES: includes information of employees in company.
+										<ul>
+											<li>EMPLOYEES_ID: employee identifier, unique for each employee.</li>
+											<li>LAST_NAME: last name of employees.</li>
+											<li>FIRST_NAME: first name of employees.</li>
+											<li>EMAIL: email of employees.</li>
+											<li>PHONE_NUMBER: phone number of employees.</li>
+											<li>HIRE_DATE: the date that employeee were hired.</li>
+											<li>JOB_ID: job identifier unique for each job.</li>
+											<li>SALARY: salary of employees.</li>
+											<li>COMMISSION_PCT: the percentage of commission.</li>
+											<li>MANAGER_ID: manager identifier of employees.</li>
+											<li>DEPARTMENT_ID: department identifier, unique for each department.</li>
+
+										</ul>
+									</li>
+									<li>REGIONS: includes information of regions. 
+										<ul>
+											<li>REGION_ID: region identifier, unique for each region. </li>
+											<li>REGION_NAME: the name of region name.</li>
+										</ul>
+									</li>
+									<li>COUNTRIES: includes information of countries.
+										<ul>
+											<li>COUNTRY_ID: country identifier, unique for each country.</li>
+											<li>COUNTRY_NAME: the name of country</li>
+											<li>REGION_ID: region identifier, unique for each region.</li>
+										</ul>
+									</li>
+									<li>LOCATION: includes information of locations.
+										<ul>
+											<li>LOCATION_ID: location identifier, unique for each location.</li>
+											<li>STREET_ADDRESS: the address of the location.</li>
+											<li>POSTAL_CODE:</li>
+											<li>CITY: city of location.</li>
+											<li>STATE_PROVINCE: </li>
+											<li>COUNTRY_ID: country identifier, unique for each country.</li>
+										</ul>
+									</li>
+									<li>DEPARTMENT: includes information of all departments in company.
+										<ul>
+											<li>DEPARTMENT_ID: department identifier, unique for each department.</li>
+											<li>DEPARTMENT_NAME: the name of departments.</li>
+											<li>MANAGER_ID: manager identifier of employees.</li>
+											<li>LOCATION_ID: location identifier, unique for each location.</li>
+										</ul>
+									</li>
+									
+								</ul>
+								<p>Here the full code that I use to extract data.</p>
+								<a href="https://github.com/nguyenngoctham02da/DataAnalyticsProject/blob/Data-Extraction-using-SQL/HR_Data_Extraction.sql">Click here</a>
+
+							
+
+
+
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>1234 Somewhere Road #87257<br />
+								Nashville, TN 00000-0000</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(000) 000-0000</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">info@untitled.tld</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
