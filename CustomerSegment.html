@@ -1,0 +1,471 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Customer Segmentation and Lifetime Value Prediction project - Ngoc-Tham Nguyen Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Customer Segmentation and Lifetime Value Prediction Project</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">All of my projects</a></li>
+							<li class="active"><a href="CustomerSegment.html">Customer Segmentation and Lifetime Value Prediction project</a></li>
+							<!-- <li><a href="elements.html">Elements Reference</a></li> -->
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">April 25, 2017</span> -->
+									<h1>Customer Segmentation and Lifetime Value Prediction using machine learning models
+									</h1>
+									<p>In this project, I use K-Means and DBSCAN to cluster customers and use BG/NBD, Gamma Gamma and XGBoost to predict customer lifetime value</p>
+									<p>Project Summary</p>
+									<a href="https://github.com/nguyenngoctham02da/Customer-Segmentation-and-Lifetime-Value-using-K-means-DBSCAN-XGBOOST">Click here</a> to access full of my project on my Github
+									
+								</header>
+								<!-- data modeling -->
+								<ol>
+									<li><b> Input: An online retail dataset of a online store from 2010-2011</b></li>
+									<li><b> Goal:</b> 
+										<ul>
+											<li>Identify which is the better clustering algorithm for customer segmentation: K-Means or DBSCAN</li>
+											<li>Identify which is the better clustering algorithm for customer lifetime value prediction: K-Means or DBSCAN</li>
+											<li>Propose business strategies</li>
+										</ul>
+									</li>
+									<li><b>Insight: </b> 
+										<ul style="list-style-type:lower-alpha">
+											<li><b>Clustering Efficiency Rating: DBSCAN+K-Means > K-Means > DBSCAN</b>
+											
+											</li>
+											<li><b>Customer Lifetime Value Prediction Efficiency Rating: BG/NBD + Gamma Gamma > XGBoost</b></li>
+											<li><b>Business Implementation:</b>
+												<table>
+													<tr>
+														<td>Group</td>
+														<td>Name</td>
+														<td>Ranking</td>
+														<td>Characteristics</td>
+														<td>Business strategies</td>
+													</tr>
+													<tr>
+														<td>0</td>
+														<td>Loyal customers</td>
+														<td>1</td>
+														<td>Second highest average order value (AOV)
+														<br>	Highest CLTV
+															</td>
+														<td>Increase their AOV by introducing promotional combos or promoting high-value products on special occasions</td>
+													</tr>
+													<tr>
+														<td>1</td>
+														<td>Potential customers</td>
+														<td>2</td>
+														<td>Highest AOV, low purchases, leading to CLTV ranking 2nd</td>
+														<td>Encourage them make purchase multiple times
+															<br> - Introducing the service of accumulating reward points after each purchase or ranking members according to the number of purchases. The higher the rank, the more attractive promotions.
+															<br> - Prioritize advertising products with a short shelf life to these customers to encourage them to buy again, such as: foods, drinks or cosmetics.
+														</td>
+													</tr>
+													<tr>
+														<td>2</td>
+														<td>Needing attention</td>
+														<td>3</td>
+														<td>Low AOV, medium purchases and low CLTV
+														<br>	Buying randomly: special occasions or discounts.
+															</td>
+														<td>Impress customers by introducing good feedback, products with high rating</td>
+
+													</tr>
+												</table>
+										</li>
+
+										</ul>
+									</li>
+									<li><b>Project Duration </b>
+										<ul style="list-style-type:lower-alpha">
+											<div class="image main"><img src="images_customer_segment/analytics_process.jpg" alt="" /></div>
+											<li><b>Data description and preprocessing </b>
+										<br>		- Remove nulls and outliers
+										<br>		- Create RFM model
+										<br>		- Standardization and scaling data
+
+											</li>
+											<li> <b>Clustering with K-Means and DBSCAN</b>
+											<br>	- Clustering with K-MEans
+											<br>		- Clustering with DBSCAN
+												<br>	- Comparing based on Silhouette score of two models
+
+											</li>
+											<li><b>Predicting customer lifetime value </b>
+											<br>	- Predicting customer lifetime value with BG/NBD and Gamma
+											<br>	- Predict customer lifetime value with XGBoost
+											<br>	- Comparing based on RMSE of two models
+
+											</li>
+											<li><b>Proposing business strategies</b>
+												
+											</li>
+										</ul>
+									</li>
+								</ol>
+								
+				
+								<b>My detail project: </b>
+									<ul style="list-style-type:decimal">
+										<li><b>Data collection and description </b>
+										<br>	The dataset retrieved from Kaggle contains all transactions that occurred between January 12, 2010 and September 12, 2011 for a UK-based online retailer. The company's products are gifts for the holidays. Many of the company's customers are wholesalers. The dataset has 541909 rows and 8 columns as follows.
+										<br>
+										<table>
+											<tr>
+												<td>Columns</td>
+												<td>Description</td>
+											</tr>
+											<tr>
+												<td>InvoiceNo</td>
+												<td>Some bills. A 6-digit integer that is uniquely assigned to each transaction. If the code starts with the letter 'c', the invoice is canceled.</td>
+
+											</tr>
+											<tr>
+												<td>StockCode</td>
+												<td>Product code. A 5-digit integer assigned to each individual product</td>
+											</tr>
+											<tr>
+												<td>Description</td>
+												<td>Product's Name</td>
+											</tr>
+											<tr>
+												<td>Quantity</td>
+												<td>The number of products</td>
+											</tr>
+											<tr>
+												<td>InvoiceDate</td>
+												<td>Transaction time created</td>
+											</tr>
+											<tr>
+												<td>UnitPrice</td>
+												<td>Product unit price </td>
+											</tr>
+											<tr>
+												<td>CustomerNo</td>
+												<td>Customer code. A 5-digit integer that is uniquely assigned to each customer.</td>
+											</tr>
+											<tr>
+												<td>Country</td>
+												<td>Client's country of residence</td>
+											</tr>
+										</table>
+										</li>
+										<li> <b>Data preprocessing</b>
+										<br> - 	We deleted rows with duplicate data, null CustomerNo, negative Quantity and UnitPrice values.
+										<pre><code># Remove duplicate rows
+df1.drop_duplicates()
+# Delete rows with null CustomerNo
+df1 = df1[pd.notnull(df1['CustomerNo'])]
+# Remove orders having Quantity =< 0
+df1=df1[df1['Quantity']>0]</code></pre>
+										- Converted the data type of the InvoiceDate column to datetime.
+										<pre><code>#Converted the data type of the InvoiceDate column to datetime
+df1["Date"] = pd.to_datetime(df["Date"])
+#Invoice columns shows only Date
+from datetime import datetime
+df1["Date"] = df1["Date"].dt.date</code></pre>
+										- Create new dataframe based on RFM model (Recency, Frequency and Monetary) by each CustomerNo
+										<pre><code>df2 = df1.copy()
+#Add TotalPrice column
+df2['TotalPrice']= df2['Price'] * df2['Quantity']
+
+
+# Add Avg_Monetary (Average Monetary)
+df2['Avg_Monetary'] = df2['TotalPrice']
+
+
+# Add Tenure column
+df2['Tenure'] = df2['Date']
+df2.head()
+import datetime
+
+
+# Select current_date 1 day from the last day ie 10/12/2019
+current_date = df2["Date"].max() + datetime.timedelta(days=1)
+print(current_date)
+
+
+# Return the corresponding columns to the RFM . model
+rfm = df2.groupby(['CustomerNo','Country']).agg({
+    'Date': lambda x: (current_date - x.max()).days,
+    "TransactionNo": lambda InvoiceNo: InvoiceNo.nunique(),
+    'TotalPrice': 'sum',
+    'Avg_Monetary':'mean',
+    'Tenure': lambda y: (current_date - y.min()).days})
+
+
+# Assign names to columns
+rfm.columns = ["Recency", "Frequency", "Monetary","Avg_Monetary","Tenure"]</code></pre>
+										- Handle outliers by using standard score (z-score) and Interquartile Range (IQR).
+										<div class="image main"><img src="images_customer_segment/recency.jpg" alt="" /></div>
+										<div class="image main"><img src="images_customer_segment/frequency.jpg" alt="" /></div>
+										<div class="image main"><img src="images_customer_segment/monetary.jpg" alt="" /></div>
+										Remove outliers in Monetary columns
+										<pre><code>#Delete lines with Monetary's zscore > 3
+rfm1 = rfm1[(z < 3).all(axis=1)]</code></pre>
+										</li>
+										<li><b>Customer Segmentation using K-Means and DBSCAN </b>
+											<ul style="list-style-type:lower-alpha">
+												<li>K-Means</li>
+												Choosing K by using the Silhouette score:
+												<div class="image main"><img src="images_customer_segment/sil_score.png" alt="" /></div>
+												We can easily see the elbow position at K=3. At K=3, the Silhouette score has the highest value close to 0.597.
+												Dataset is splitted into 3 groups. There are 1468 objects in cluster 0, 1498 objects in cluster 1 and 1349 objects in cluster 2.
+												<div class="image main"><img src="images_customer_segment/cluster_kmeans.png" alt="" /></div>
+												<li>DBSCAN</li>
+												Construct a k-distance graph to select the appropriate Eps distance for the DBSCAN model. The calculated distance here will be the Euclidean distance, the minimum number of MinPts data points located in the neighborhood will be selected by the group based on the amount of data, here will choose 3 different MinPts of 31, 62 and 7; for each MinPts will look at the corresponding k-distance graphs and select the eps based on the 'elbow' region of the graph.
+												<br>Test results and indexes of each clustering group:
+												<table>
+													<tr>
+														<td></td>
+														<td>DBSCAN 1 clustering</td>
+														<td>DBSCAN 2 clustering</td>
+														<td>DBSCAN 3 clustering</td>
+													</tr>
+													<tr>
+														<td>Number of clusters</td>
+														<td>5</td>
+														<td>5</td>
+														<td>9</td>
+													</tr>
+													<tr>
+														<td>Silhouette index</td>
+														<td>0.487</td>
+														<td>0.487</td>
+														<td>0.457</td>
+													</tr>
+													<tr>
+														<td>CH index</td>
+														<td>10349.7</td>
+														<td>10403.2</td>
+														<td>6649.1</td>
+													</tr>
+													<tr>
+														<td>DB index</td>
+														<td>1.09</td>
+														<td>1.03</td>
+														<td>1.75</td>
+													</tr>
+												</table>
+												Number of clusters will be 5.
+												<div class="image main"><img src="images_customer_segment/cluster_dbscan.png" alt="" /></div>
+												<li>Combine K-Means and DBSCAN</li>
+												After clustering by K-Means algorithm the number of clusters is 3. We will use the DBSCAN algorithm to remove noise points in each cluster. This will help the clusters to be more distinguished from each other by effectively removing the noise point.
+												<br>The Silhouette score with K=3 after noise removal is 0.602922, the CH index is 15928.675631 and the DB index is 0.593439.
+												<div class="image main"><img src="images_customer_segment/cluster_dbscan_kmeans.png" alt="" /></div>
+											</ul>
+										</li>
+										<li><b>Customer Lifetime Value Prediction using BG/NBD, Gamma Gamma and XGBoost </b>
+											<ul style="list-style-type:lower-alpha">
+												<li>BG/NBD + Gamma Gamma
+													<br> - I use BG/NBD to predict purchases of customers
+													<div class="image main"><img src="images_customer_segment/bg.jpg" alt="" /></div>
+													- I use Gamma Gamma to predict the AOV (Average order value) of customers 
+													<div class="image main"><img src="images_customer_segment/gamma.jpg" alt="" /></div>
+													I will evaluate the effectiveness of the model
+													<table>
+														<tr>
+															<td>MSE</td>
+															<td>450.1</td>
+														</tr>
+														<tr>
+															<td>RMSE</td>
+															<td>21.2</td>
+														</tr>
+														<tr>
+															<td>MAE</td>
+															<td>5.8</td>
+														</tr>
+													</table>
+													RMSE is low which shows that the BG/NBD and Gamma Gamma model predict the customers lifetime value quite accurately.
+												</li>
+												<li>XGBoost
+													<br> I will use XGBoost predict the business's revenue per customer based on the xgb.XGBRegressor() model.
+													<div class="image main"><img src="images_customer_segment/xgb_result.jpg" alt="" /></div>
+													I will evaluate the effectiveness of the model
+													<table>
+														<tr>
+															<td>MSE</td>
+															<td>44116.8</td>
+														</tr>
+														<tr>
+															<td>RMSE</td>
+															<td>210.04</td>
+														</tr>
+														<tr>
+															<td>MAE</td>
+															<td>54.80</td>
+														</tr>
+													</table>
+												</li>
+											</ul>
+										</li>
+										<li><b>Business Insights and Suggestions </b>
+											<ul style="list-style-type:lower-alpha">
+												<li><b>Based on CLTV and geography</b></li>
+												<div class="image main"><img src="images_customer_segment/cltv_barchart.jpg" alt="" /></div>
+												<ul>Insights
+													<li>Japan has the highest average purchase value but their average frequency is quite low which means they usually buy luxury products in special occasions like holidays or festivals</li>
+													<li>The UK is the main market due to the highest average total purchase value but not in the top of the countries with the average purchase value means that UK customers often buy frequently not buy a lot.</li>
+												</ul>
+												<ul>Business Suggestions
+													<li>Businesses should prioritize advertising luxury items and offer discounts on special occasions like: Lunar new year or Christmas.</li>
+													<li>Increasing the purchasing value of the UK customer by offering coupons or discounts when they buy combo.</li>
+												</ul>
+												<li><b>Combine segmentation and CLTV suggestions</b>
+													<div class="image main"><img src="images_customer_segment/cltv_cluster.jpg" alt="" /></div>
+													<table>
+														<tr>
+															<td>Group</td>
+															<td>Name</td>
+															<td>Ranking</td>
+															<td>Characteristics</td>
+															<td>Business strategies</td>
+														</tr>
+														<tr>
+															<td>0</td>
+															<td>Loyal customers</td>
+															<td>1</td>
+															<td>Second highest average order value (AOV)
+															<br>	Highest CLTV
+																</td>
+															<td>Increase their AOV by introducing promotional combos or promoting high-value products on special occasions</td>
+														</tr>
+														<tr>
+															<td>1</td>
+															<td>Potential customers</td>
+															<td>2</td>
+															<td>Highest AOV, low purchases, leading to CLTV ranking 2nd</td>
+															<td>Encourage them make purchase multiple times
+																<br> - Introducing the service of accumulating reward points after each purchase or ranking members according to the number of purchases. The higher the rank, the more attractive promotions.
+																<br> - Prioritize advertising products with a short shelf life to these customers to encourage them to buy again, such as: foods, drinks or cosmetics.
+															</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>Needing attention</td>
+															<td>3</td>
+															<td>Low AOV, medium purchases and low CLTV
+															<br>	Buying randomly: special occasions or discounts.
+																</td>
+															<td>Impress customers by introducing good feedback, products with high rating</td>
+
+														</tr>
+													</table>												
+												</li>
+											</ul>
+										</li>
+									</ul>
+								
+								
+								
+								<p>Here the full code and dataset I used</p>
+								<a href="https://github.com/nguyenngoctham02da/Customer-Segmentation-and-Lifetime-Value-using-K-means-DBSCAN-XGBOOST">Click here</a>
+
+							
+
+
+
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Trung Thang Quater, Binh Thang Ward, Di An City<br />
+								Binh Duong Province</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">0961563804</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">nguyenngoctham.work.02@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

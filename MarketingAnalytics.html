@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Marketing Project project - Ngoc-Tham Nguyen Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Marketing Analytics Project</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">All of my projects</a></li>
+							<li class="active"><a href="MarketingAnalytics.html">Marketing Analytics project</a></li>
+							<!-- <li><a href="elements.html">Elements Reference</a></li> -->
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">April 25, 2017</span> -->
+									<h1>Analyzing a marketing campaign<br />
+									using Python</h1>
+									<p>Project Summary</p>
+									<a href="https://github.com/nguyenngoctham02da/MarketingAnalyticsProject">Click here</a> to access full of my project on my Github
+									
+								</header>
+								<!-- data modeling -->
+								<ol>
+									<li><b> Input: Dataset about Marketing campaign</b></li>
+									<li><b> Goal:</b> 
+										<ul>
+											<li>Identify what is the most effective marketing campaign</li>
+											<li>Identify customers who bring the most value</li>
+											<li>The most significant factor influence the store purchases</li>
+										</ul>
+									</li>
+									<li><b>Insight: </b> 
+										<ul style="list-style-type:lower-alpha">
+											<li><b>Customers having high AOV (average order value) tend to</b>
+												<ul>
+													<li>not have many kids</li>
+													<li>not visit website</li>
+													<li>buy through catalog and store</li>
+													<li>buy high amount of meat and wines</li>
+													<li>high income</li>
+												</ul>
+											</li>
+											<li><b>Total amount is the most influenced factor on the number of store purchases. </b></li>
+											<li><b>The remaining customers had more fish purchases on average than the Married PhD group. </b></li>
+											<li><b>The last campaign is the most successful.</b></li>
+											<li><b>Catalog is the most underperforming channel.</b></li>
+
+										</ul>
+									</li>
+									<li><b>Project Duration </b>
+										<ul style="list-style-type:lower-alpha">
+											<li><b>Assessing and Cleaning data: </b> Checking null values and data type
+											</li>
+											<li> <b>Exploratory Data Analysis</b>
+												<ul>
+													<li>Are there any outliers? How will you wrangle/handle them?</li>
+													<li>Are there any useful variables that you can engineer with the given data?</li>
+												</ul>
+											</li>
+											<li><b>Statistical Analysis </b>
+												<ul>
+													<li>What factors are significantly related to the number of store purchases?</li>
+													<li>Fish has Omega 3 fatty acids which are good for the brain. - Accordingly, do "Married PhD candidates" have a significant relation with the amount spent on fish?</li>
+												</ul>
+											</li>
+											<li><b>Further Analysis </b>
+												<ul>
+													<li>Which marketing campaign is most successful and unsuccessful?</li>
+													<li>Which channels are underperforming?</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ol>
+								<p><i>Context: Assuming that I've been told by the Chief Marketing Officer that recent marketing campaigns have not been as effective as they were expected to be. I need to analyze the data set to understand this problem and figure out useful insights.</i></p>
+								<p><b>Database Description</b></p>
+								<div class="image main"><img src="images_marketing_analytics/data_description.png" alt="" /></div>
+								<p>Meaning of some fields:</p>
+								<ul>
+									<li>Dt_Customer: Date of customer's enrollment with the company</li>
+									<li>MntWines: Amount spent on wine in the last 2 years</li>
+									<li>NumWebPurchase: Number of purchases made through the company's web site</li>
+									<li>AcceptedCmp3: 1 if customer accepted the offer in the 3rd campaign, 0 otherwise</li>
+									<li>Complain: 1 if customer complained in the last 2 years, 0 otherwise</li>
+									<li>Respones: 1 if customer accepted the offer in the last campaign, 0 otherwise</li>
+								</ul>
+								<b>My detail project: </b>
+									<ul style="list-style-type:decimal">
+										<li><b>Assessing and Cleaning data </b>
+											<ul>
+												<li>Checking null values: There is no null value in the dataset</li>
+												<li>Checking data type (change data type if necessary)
+													<br>Income is object type. Solution: Change it to int type:
+													<pre><code>df1['Income']=df1['Income'].astype(int)
+														df1.info()</code></pre>
+														<br>Data type of Dt_Customer is object. Solution: change it to datetime
+														<pre><code>df1['Dt_Customer']=pd.to_datetime(df1['Dt_Customer'])
+															df1['Dt_Customer'].info()</code></pre>
+														<br>Column 'Income' has two blank spaces. Solution: change the column name:
+														<pre><code>df1.rename(columns={' Income ':'Income'},inplace=True)
+															df1.columns
+															</code></pre>
+												</li>
+											</ul>
+										</li>
+										<li> <b>Exploratory Data Analysis</b>
+											<ul>
+												<li>Are there any outliers? How will you wrangle/handle them?</li>
+												<div class="image main"><img src="images_marketing_analytics/box_plot_outliers.png" alt="" /></div>
+												I will remove outliers of Year Birth because they seem to be error because it is impossible for someone who was born in 1900 still alive.
+												<li>Are there any useful variables that you can engineer with the given data?</li>
+												<br>I will create more useful variables
+												<br>- Joint date, month and year of Dt_customer (for determine which time people choose to become customer)
+												<br> - Total amount
+												<br> - Total purchase
+												<br> - AOV
+												<br> - Total kids in family
+												<pre><code>new_df['Join_week']=new_df['Dt_Customer'].dt.weekday
+new_df['Join_month']=new_df['Dt_Customer'].dt.month
+new_df['Join_year']=new_df['Dt_Customer'].dt.year
+new_df['Total_amount']=new_df['MntFishProducts']+new_df['MntWines']+new_df['MntMeatProducts']+new_df['MntSweetProducts']+new_df['MntGoldProds']+new_df['MntFruits']
+new_df['Total_purchase']=new_df['NumDealsPurchases']+new_df['NumWebPurchases']+new_df['NumStorePurchases']+new_df['NumWebVisitsMonth']+new_df['NumCatalogPurchases']
+new_df['Total_kids']=new_df['Kidhome']+new_df['Teenhome']
+new_df['AOV']=new_df['Total_amount']/new_df['Total_purchase']												
+													</code></pre>
+												
+												<li>What are characteristics of customers having high income, high AOV and having kids?
+													<div class="image main"><img src="images_marketing_analytics/heatmap.png" alt="" /></div>
+													<br> - People having high income: not buy frequently (low recency), buy wines and meats (high amount), not visit web frequently.
+
+													<br> - People having kids tend to:
+													buy low amount of food, 
+													low AOV, 
+													buy with deals, 
+													visit websites frequently.
+													<br>- People having high AOV tend to: 
+													not have many kids, 
+													not visit website, 
+													buy through catalog and store, 
+													buy high amount of meat and wines, 
+													high income.
+													
+												</li>
+											</ul>
+										</li>
+										<li><b>Statistical Analysis </b>
+											<ul>
+												<li>What factors are significantly related to the number of store purchases?</li>
+												I use the importance score of the Random Forest model to find out which factors are the most significant to the number of store purchases.
+<br> Prepare the dataset for the model by replace string value by numeric value using get_dummies
+												<pre><code># What factors are significantly related to the number of store purchases?
+# use random forest to predict then use importance score
+#--create new dataframe to run random forest model (this is a model with high accuracy and both classification and regression)
+rd_df=new_df.drop(columns=['ID','Dt_Customer'])
+#--replace infinity values (if any) to the value 0
+rd_df.replace([np.inf,-np.inf],0,inplace=True)
+#--convert a string column to a number (one-hot coding) with get_dummies
+rd_df=pd.get_dummies(rd_df)
+rd_df.head()
+</code></pre>
+Then I trained the model
+<pre><code>#--import split train test function
+from sklearn.model_selection import train_test_split
+#--tạo dataframe train test theo chiều ngang
+X=rd_df.drop(columns=['NumStorePurchases'])
+y=rd_df['NumStorePurchases']
+#split train test dataset
+X_train, X_test, y_train, y_test=train_test_split(X, y,test_size=0.3)
+#import random forest regressor
+from sklearn.ensemble import RandomForestRegressor
+#--create forest having 100 trees
+rg = RandomForestRegressor(n_estimators=200, n_jobs=-1)
+#--train the model
+rg.fit(X_train, y_train)
+#--test the model
+y_pred=rg.predict(X_test)
+</code></pre>
+
+												<div class="image main"><img src="images_marketing_analytics/importance_score.png" alt="" /></div>
+												We can conclude that total amount is the most influenced factor on the number of store purchases.
+												<li>Fish has Omega 3 fatty acids which are good for the brain. - Accordingly, do "Married PhD candidates" have a significant relation with the amount spent on fish?</li>
+												I used t-test to test if two groups (Married PhD candidates vs. The rest of the customers) have the same mean.
+												<pre><code># use t-test to test if these two groups have the same mean
+from scipy.stats import ttest_ind
+#This is a two-sided test for the null hypothesis that 2 independent samples have identical average (expected) values.
+#This test assumes that the populations have identical variances by default.
+pval = ttest_ind(married_phd.MntFishProducts, the_rest.MntFishProducts).pvalue
+print("T-test p-value: ", pval)</code></pre>
+<div class="image main"><img src="images_marketing_analytics/t_test.png" alt="" /></div>
+- H0: u1=u2
+<br>- H1: u1 >< u2
+<br>- If p-value < 0.05, we reject hypothesis H0, otherwise we will accept hypothesis H0.
+<br>- According to the above results, p-value=0.005 -> reject the hypothesis H0, which is 2 unequal averages (based on the chart to know which side is bigger)
+<div class="image main"><img src="images_marketing_analytics/box_plot_two_means.png" alt="" /></div>
+The remaining group of customers had more fish purchases on average than the Married PhD group.
+
+
+											</ul>
+										</li>
+										<li><b>Further Analysis </b>
+											<ul>
+												<li>Which marketing campaign is most successful?</li>
+												We will use the number of acceptances to evaluate the effectiveness of each campaign 
+												<pre><code>new_df[["AcceptedCmp1", "AcceptedCmp2","AcceptedCmp3","AcceptedCmp4","AcceptedCmp5","Response"]].sum().sort_values().plot.barh()
+plt.title("Which marketing campaign is most successful?")
+plt.xlabel("Offer Accepted");
+plt.ylabel("Campaign")</code></pre>
+<div class="image main"><img src="images_marketing_analytics/most_successful_compaign.png" alt="" /></div>
+We conclude that the last campaign is the most successful
+												
+												<li>Which channels are underperforming?</li>
+												<div class="image main"><img src="images_marketing_analytics/channels.png" alt="" /></div>
+												Catalog is the most underperforming channel.
+											</ul>
+										</li>
+									</ul>
+								
+								
+								
+								<p>Here the full code and dataset I used</p>
+								<a href="https://github.com/nguyenngoctham02da/MarketingAnalyticsProject">Click here</a>
+
+							
+
+
+
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Trung Thang Quater, Binh Thang Ward, Di An City<br />
+								Binh Duong Province</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">0961563804</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">nguyenngoctham.work.02@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

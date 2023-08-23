@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Super Store Sales Analytics - Ngoc-Tham Nguyen Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Super Store Sales Analytics</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">All of my projects</a></li>
+							<li class="active"><a href="SuperStoreSales.html">Super Store Sales Analytics project</a></li>
+							<!-- <li><a href="elements.html">Elements Reference</a></li> -->
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">April 25, 2017</span> -->
+									<h1>Super Store Sales Analytics<br />
+									using Power BI</h1>
+									<p>In this project I use Power BI to build a dashboard about sales of Super Store in the US in 2015.</p>
+								</header>
+								<!-- data modeling -->
+								<ol>
+									<li><b> Input: </b>Dataset of sales of an store in the US in 2015.</li>
+									<li><b> Goal:</b> 
+										<ul>
+											<li>Identify insight of business permanence which are about: sales, profit (positive and negative), customers and products.</li>
+											<li>Identity the causes of negative profit and returned orders.</li>
+											<li>Propose suggestions to reduce negative profits the the numbers of returned orders.
+											</li>
+										</ul>
+									</li>
+									<li><b>Result: </b> 
+										<ul style="list-style-type:lower-alpha">
+											<li><b>Insights</b>
+												<ul>
+													<li>Negative profit accounted for 36,12% in total. It was a significant figure so the business has to take it into consideration.</li>
+													<li>Office Supplies brought the most Positive profit and the least Negative profit.</li>
+													<li>The majority of customers brought between 0 to 20K revenue (Sales) to the business.</li>
+													<li>Profit had the most fluctuation from April to June. It means that people shopped the most in summer.</li>
+													<li>People tended to buy Technology products in the first quarter of 2015 while Office Supplies were bought the most in April.</li>
+													<li>Most of the negative profit came from orders which were shipped within 4 days.</li>
+													<li>3/4 of returned orders were shipped by Regular Air. It shows that Regular Air Ship Mode was not effective.</li>
+												</ul>
+											</li>
+											<li><b>Suggestions</b>
+												<ul>
+													<li>Business should ship to customers under 3 days to decrease negative profit.
+													</li>
+													<li>Improve the quality of Regular Air ship mode to reduce the negative profit.</li>
+													<li>Promoting marketing Technology products in the first quarter and Office Supplies in April.</li>
+												</ul>
+											</li>
+											
+
+										</ul>
+									</li>
+									<li><b>Project Duration </b>
+										<ul style="list-style-type:lower-alpha">
+											<li><b>Data reprocessing and description</b>
+											</li>
+											<li> <b>Building dashboards and analyzing</b>
+											</li>
+											
+											<li><b>Conclusion</b>
+											
+											</li>
+										</ul>
+									</li>
+								</ol>
+								<b>My detailed project</b>
+								<ul style="list-style-type:decimal">
+									<li><b>Data reprocessing and description</b>
+										<div class="image main"><img src="images/super_store_model.png" alt="" /></div>
+								
+								<p>The data consists of 3 tables:</p>
+								<ul>
+									<li>Orders: includes information about customer transactions from January to June 2016.</li>
+									<li>Return: aggregates the rows with negative profits in the Orders table-returned orders.</li>
+									<li>Managers: Includes information about the manager name of each region.</li>
+								</ul>
+								<p>Information about the Orders table property is as follows:</p>
+								<ul>
+									<li>Row ID</li>
+									<li>Order Priority</li>
+									<li>Discount</li>
+									<li>Unit Price</li>
+									<li>Shipping Cost</li>
+									<li>Customer ID: unique for each customer</li>
+									<li>Customer Name</li>
+									<li>Ship Mode</li>
+									<li>Customer Segment: there are 4 customer segment: Small Business, Corporate, Consumer and Home Office</li>
+									<li>Product Category</li>
+									<li>Product Sub-category</li>
+									<li>Product Container</li>
+									<li>Product Name</li>
+									<li>Product Base Margin</li>
+									<li>Country</li>
+									<li>Region</li>
+									<li>State or Provine</li>
+									<li>City</li>
+									<li>Postal Code</li>
+									<li>Order Date</li>
+									<li>Ship Date: date customer receive their packages</li>
+									<li>Profit: negative when goods is returned</li>
+									<li>Quantity order new: quanity</li>
+									<li>Sales</li>
+									<li>Order ID: unique for each order</li>
+								<!-- tạo cột value -->
+								<p>I create Value column to distinguish negative and positive profit rows</p>
+								<pre><code>Value = IF(Orders[Profit]>=0,"Positive","Negative")</code></pre>
+								
+								<div class="image main"><img src="images/value_column.png" alt="" /></div>
+								
+					
+								<!-- tạo cột days ships -->
+								<p>I create Days Ship column to determine how many days it take to ship to customers. </p>
+								<pre><code>Days Ship = DATEDIFF(Orders[Order Date],Orders[Ship Date],DAY)</code></pre>
+								<div class="image main"><img src="images/days_ship.png" alt="" /></div>
+								
+					
+
+
+								<!-- tạo cột days ship bins -->
+								<p>I create Days ship bins to draw the histogram chart to illustrate the distribution of days ship</p>
+								<div class="image main"><img src="images/days_ship_bins.png" alt="" /></div>
+							
+								</ul>
+									</li>
+
+									<li><b>Building dashboards and analyzing</b>
+										<!-- profit -->
+								<p>I build the first dashboard to explore insight about the profit.</p>
+								<div class="image main"><img src="images/super_store_profit.png" alt="" /></div>
+								
+								<p>As we see, total profit that the business got was 2240,08K. Meanwhile, negative profit accounted for 36,12% in total. It was a significant figure so the business has to take it into consideration.
+								</p>
+								<p>
+									The <i>Positive and Negative Profit by category</i> shows that Office Supplies brought the most Positive profit and the least Negative profit. It means that this Category was important and the business should promote it.
+								</p>
+								<p>The <i>Sales and Profit by Customer</i>  scatter chart shows that the majority of customers brought between 0 to 20K revenue (Sales) to the business. More than a half of them are in the 0 to 10K profit area while the rest of them brought negative profit. 
+
+								</p>
+								<p>The <i>Profit by Region</i> shows that the profit in 3 regions was quite similar.</p>
+								<p>The <i>Positive and Negative Profit by city</i> 
+									shows the total positive and negative profit of each city. This chart helps us find top cities that brought the best and worst profit.</p>
+									
+									<div class="image main">
+										<img src="images/top_bottom_city_profit.png" alt="" />
+										<p>Top 10 cities had the highest profit</p>
+									</div>
+
+									<div class="image main">
+										<img src="images/top_bottom_city_profit.png" alt="" />
+
+									</div>
+
+								<!-- time -->
+								<p>I build the second dashboard to explore insight about the time.</p>
+								<div class="image main"><img src="images/super_store_time.png" alt="" /></div>
+								<p>The <i>Profit by Date</i> chart shows the fluctuation of profit by date in the first 6 months in 2015. We see that profit in May and June was always above 0. Meanwhile, profit reached the lowest point and highest point in April. It shows that profit had the most fluctuation in April. It means that people shopped the most in summer.
+							</p>
+							<p>The <i>Sales by Month and Category</i> shows that people tended to buy Technology products in the first quarter of 2015 while Office Supplies were bought the most in April.</p>
+
+							<p>The <i>Days ship by orders</i> chart shows that the majority of orders were shipped from 0 to 2 days, which means that the shipping system was quite productive.</p>
+
+							<p>The <i>Days ship of negative profit</i> chart shows that the second quarter brought the most positive profit with less negative profit.</p>
+
+							<p>The <i>Profit by Month and Category</i> chart shows that the second quarter brought the most positive profit with 
+								less negative profit.</p>
+								<!-- customer -->
+								<p>I build the third dashboard to explore insight about the customer.</p>
+								<div class="image main"><img src="images/super_store_customer.png" alt="" /></div>
+								<p>The <i>Top 5 customer with highest profit</i> and <i>Top 5 customers with highest Negative Profit</i> will help us find the most profitable to give them special discounts to increase their loyalty and the most unprofitable customers to propose some solutions when they order high value orders to minimize the negative profit.</p>
+
+							<p>The <i>Count of Order by Order Priority</i> shows that the proportion of customers in these groups are quite similar.</p>
+							
+							<p>The <i>Count of Order with Negative Profit by Ship Mode</i> shows that 3/4 of returned orders were shipped by Regular Air. It shows that this Ship Mode was not effective so the business should improve the quality of this Ship Mode.</p>
+
+							<p>The <i>Count Customer by Customer Segment</i> shows that Corporate groups have the most customers while the percentage of customers in 4 regions is quite similar</p>
+
+									</li>
+									<li><b>Conclusion</b>
+										<ul style="list-style-type:lower-alpha">
+											<li><b>Insights</b>
+												<ul>
+													<li>Negative profit accounted for 36,12% in total. It was a significant figure so the business has to take it into consideration.</li>
+													<li>Office Supplies brought the most Positive profit and the least Negative profit.</li>
+													<li>The majority of customers brought between 0 to 20K revenue (Sales) to the business.</li>
+													<li>Profit had the most fluctuation from April to June. It means that people shopped the most in summer.</li>
+													<li>People tended to buy Technology products in the first quarter of 2015 while Office Supplies were bought the most in April.</li>
+													<li>Most of the negative profit came from orders which were shipped within 4 days.</li>
+													<li>3/4 of returned orders were shipped by Regular Air. It shows that Regular Air Ship Mode was not effective.</li>
+												</ul>
+											</li>
+											<li><b>Suggestions</b>
+												<ul>
+													<li>Business should ship to customers under 3 days to decrease negative profit.
+													</li>
+													<li>Improve the quality of Regular Air ship mode to reduce the negative profit.</li>
+													<li>Promoting marketing Technology products in the first quarter and Office Supplies in April.</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								
+								
+								
+								
+
+								
+							
+
+
+
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Trung Thang Quater, Binh Thang Ward, Di An City<br />
+								Binh Duong Province</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">0961563804</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">nguyenngoctham.work.02@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

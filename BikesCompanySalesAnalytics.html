@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Bikes Company Sales Analytics project - Ngoc-Tham Nguyen Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Bikes Company Sales Analytics Project</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">All of my projects</a></li>
+							<li class="active"><a href="BikesCompanySalesAnalytics.html">Bikes Company Sales Analytics project</a></li>
+							<!-- <li><a href="elements.html">Elements Reference</a></li> -->
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">April 25, 2017</span> -->
+									<h1>Bikes Company Sales Analytics using SQL and Power BI
+									</h1>
+									<p>In this project, I have to build a dashboard to meet the demand from the sales manager in a Bikes Company</p>
+									<p>Project Summary</p>
+									<a href="https://github.com/nguyenngoctham02da/Internet-Sales-Dashboard-using-SQL-and-Power-BI">Click here</a> to access full of my project on my Github
+									
+								</header>
+								<!-- data modeling -->
+								<ol>
+									<li><b> Input:</b> This is a dataset from Microsoft which is about Internet Sales. It includes dimension and fact tables about sales, customers, products and transactions from 2019 to 2021. It can be download <a href="https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver15&tabs=ssms ">here</a></li>
+									<li><b> Goal:</b> 
+										<ul>
+											<li>Analyze the business performance on overview customer and revenue</li>
+											<li>Propose suggestions to improve the business performance</li>
+									
+										</ul>
+									</li>
+									<li><b>Result: </b> 
+										<ul>
+											<li><b>Problems: </b>why business stopped selling Bikes category while its revenue increased everyer from 2019-2020?</li>
+											<li><b>Insights:</b>
+												<br> - Businesses operate effectively when revenue increases and budget decreases over the years.
+												<br>- The main market is in English-spoken countries like: the US, Europe and Australia.
+												<br>- Customers are most distributed in London and Paris.
+												<br>- Equal number of male and female customers.
+												<br>- The best-selling model is the Mountain-200, especially around the end of the year.
+
+											</li>
+											<li><b>Suggestions:</b>
+												<br>- Promote promotional activities on holidays of these countries such as Christmas, Thanksgiving or New Year.
+												<br>- Promote the promotion of the Mountain-200 model at the end of the year.
+											</li>
+										</ul>
+									</li>
+									
+									<li><b>Project Duration </b>
+										<ul style="list-style-type:lower-alpha">
+												<li>Identify business requirements and create user story based on an “email” from the sales manager</li>
+												<li>Extract and clean data using SQL</li>
+												<li>Building dashboard</li>
+												<li>Conclusion</li>
+												<li>Suggestions</li>
+											
+										</ul>
+									</li>
+								</ol>
+								
+				
+								<b>My detail project: </b>
+									<ul style="list-style-type:decimal">
+										<li><b>Business requirements and user story creating </b>
+										<br>Assume that this is an email from a sales manager:
+										<br> <i> I hope you are doing well. We need to improve our internet sales reports and want to <b>move from static reports to visual dashboards</b>. Essentially, we want to focus on <b>how much we have sold of what products</b>, to <b>which clients and how it has been over time</b>. Seeing as each sales person works on <b>different products and customers</b> it would be beneficial to be <b>able to filter</b> them also. We measure our <b>numbers against budget</b> so I added that in a spreadsheet so we can compare our value against performance. The budget is for 2021 and we usually look 2 years back in time when we do analysis of sales.</i>
+										<br> Then I create a user story as below:
+										<table>
+											<tr>
+												<td>No #</td>
+												<td>As a (role)</td>
+												<td>I want (request/demand)</td>
+												<td>So that I (user value)</td>
+												<td>Acceptance Criteria</td>
+											</tr>
+											<tr>
+												<td>1</td>
+												<td>Sales manager</td>
+												<td>to get a dashboard overview of internet sales</td>
+												<td>can follow better which customers and products sells the best</td>
+												<td>a power bi dashboard which updates data once a day</td>
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>Sales representatives</td>
+												<td>a detailed overview of internet sales per customers</td>
+												<td>can follow up my customers that buy the most and who we can sell to</td>
+												<td>a power bi dashboard which allows me to filter data for each customer</td>
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>Sales representatives</td>
+												<td>a detailed overview of internet sales per product</td>
+												<td>can follow up my product that buy the most and who we can sell to</td>
+												<td>a power bi dashboard which allows me to filter data for each product</td>
+											</tr>
+											<tr>
+												<td>4</td>
+												<td>Sales manager</td>
+												<td>a dashboard overview of internet sales</td>
+												<td>follow sales over time against budget</td>
+												<td>a power bi dashboard with graphs and KPIs comparing against budget</td>
+											</tr>
+											
+										</table>
+										</li>
+										<li> <b>Data cleaning and extraction using SQL</b>
+										<br> I use SQL to extract some necessary tables and columns from the data warehouse. You can see the way I extract data from the data warehouse in the .sql script <a href="https://github.com/nguyenngoctham02da/Internet-Sales-Dashboard-using-SQL-and-Power-BI">here</a>
+									<br>	I extract fours dimension from the data warehouse:
+									<br> Dimention 1: DIM_CALENDAR
+									<div class="image main"><img src="images_bikes_sales/dim_calendar.png" alt="" /></div>
+									Dimention 2: DIM_CUSTOMERS
+									<div class="image main"><img src="images_bikes_sales/dim_customer.png" alt="" /></div>
+									Dimention 1: DIM_SALES
+									<div class="image main"><img src="images_bikes_sales/dim_sales.png" alt="" /></div>
+									Dimention 1: DIM_PRODUCTS
+									<div class="image main"><img src="images_bikes_sales/dim_product.png" alt="" /></div>
+										
+										</li>
+										<li><b>Building a dashboard using Power BI</b>
+										<br> I import all dimensions in Power BI and create relationships for them.
+										<div class="image main"><img src="images_bikes_sales/relationship.png" alt="" /></div>
+										<br>	I use Power BI to build a dynamic dashboard about sales overview, customers and product.
+										<div class="image main"><img src="images_bikes_sales/overview.png" alt="" /></div>
+										The overview dashboard shows that:
+										<br> - Revenue grew and budget declined over the years which means that business operated efficiently.
+										<br> - The main product is Bikes which accounted for the majority of sales in 2019 and 2020 but are no longer sold in 2021. Why is that?
+										<br> - The main market is in English-spoken countries like: the US, Europe and Australia. Therefore, the business should promote promotional activities on holidays of these countries such as Christmas, Thanksgiving or New Year.
+										<div class="image main"><img src="images_bikes_sales/customer.png" alt="" /></div>
+										The customer dashboard shows that:
+										<br> - Customers are most distributed in London and Paris
+										<br> - Equal number of male and female customers
+										<li><b>Conclusion</b>
+											<ul>
+												<li><b>Problems: </b>why business stopped selling Bikes category while its revenue increased everyer from 2019-2020?</li>
+												<li><b>Insights:</b>
+													<br> - Businesses operate effectively when revenue increases and budget decreases over the years.
+													<br>- The main market is in English-spoken countries like: the US, Europe and Australia.
+													<br>- Customers are most distributed in London and Paris.
+													<br>- Equal number of male and female customers.
+													<br>- The best-selling model is the Mountain-200, especially around the end of the year.
+	
+												</li>
+											</ul>
+										</li>
+										<li><b>Suggestions</b>
+											<br>- Promote promotional activities on holidays of these countries such as Christmas, Thanksgiving or New Year.
+											<br> - Promote the promotion of the Mountain-200 model at the end of the year.
+										</li>
+										</li>
+										
+									</ul>
+								
+								
+								
+								<p>Here the full code and dataset I used</p>
+								<a href="https://github.com/nguyenngoctham02da/Internet-Sales-Dashboard-using-SQL-and-Power-BI">Click here</a>
+
+							
+
+
+
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Trung Thang Quater, Binh Thang Ward, Di An City<br />
+								Binh Duong Province</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">0961563804</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">nguyenngoctham.work.02@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

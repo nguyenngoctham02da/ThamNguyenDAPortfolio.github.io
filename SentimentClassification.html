@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Sentiment Classification project - Ngoc-Tham Nguyen Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Sentiment Classification Project</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">All of my projects</a></li>
+							<li class="active"><a href="SentimentClassification.html">Sentiment Classification project</a></li>
+							<!-- <li><a href="elements.html">Elements Reference</a></li> -->
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<!-- <span class="date">April 25, 2017</span> -->
+									<h1>Sentiment Classification<br />
+									using NLP models</h1>
+									<p>In this project, I will use python to analyze the reviews of products of an online store to find out the characteristics of negative, positive and neutral reviews. Then I use Naive Bayes, XGBoost and LSTM to classify reviews.</p>
+									<a href="https://github.com/nguyenngoctham02da/Reviews-Classification-using-Naive-Bayes-XGBoost-and-LSTM">Click here</a> to access full of my project on my Github
+									
+								</header>
+								<!-- data modeling -->
+								<ol>
+									<li><b> Input: </b>The dataset I used in this project is about reviews of customers about products of a business. This dataset includes main features of any product like product_name, price, rate, review, summary and sentiment (label).</li>
+									<li><b> Goal:</b> 
+										<ul>
+											<li>Find out the characteristics and the distribution of negative, positive and neutral comments.</li>
+											<li>I will find out what popular keywords are in positive, negative and neutral reviews by drawing word clouds.</li>
+											<li>Identify the best model for sentiment prediction: Naive Bayes, XGBoost or LSTM.</li>
+										</ul>
+									</li>
+									<li><b>Result: </b> 
+										<ul style="list-style-type:lower-alpha">
+											<li><b>Exploration Data Analysis</b>
+												<ul>
+													<li>The number of 5-star ratings accounted for the most, 2-star ratings accounted for the least, and 1-star ratings ranked 3rd. That shows that most products satisfy customers.</li>
+													<li>Because the number of 5-star ratings accounted for the most, the number of positive reviews also accounted for the most. Followed by negative reviews and neutral reviews.</li>
+													<li>The length of comments focuses on the range of 0-20 words. It can be seen that long reviews are negative reviews and shorter reviews are neutral or positive.</li>
+													
+												</ul>
+											</li>
+											<li><b>Word Clouds</b>
+												<ul>
+													<li>Common keywords in negative reviews include: <u>small, bad, fan, size</u>. These keywords indicate that customers are not satisfied with the cooling devices such as: cooler or fan</li>
+													<li>Popular keywords in positive reviews include: <u>nice, good, air, cooler, excellent, great, amaze</u>. These reviews show that customers have a good experience with the products.</li>
+													<li>Common keywords in neutral reviews include: <u>overall, average or ok</u>. Show a neutral attitude towards the product.</li>
+												</ul>
+											</li>
+											<li><b>Text classification models comparison</b>
+												<ul>The results compare the accuracy of 3 models: Naïve Bayes, XGBoost and LSTM in text classification.
+													<li>Naïve Bayes: 0.89</li>
+													<li>XGBoost: 0.91</li>
+													<li>LSTM: 0.92</li>
+													It can be concluded that LSTM is better than Naïve Bayes and XGBoost in text classification.
+												</ul>
+											</li>
+											
+
+										</ul>
+									</li>
+									<li><b>Project Duration </b>
+										<ul style="list-style-type:lower-alpha">
+											<li><b>Data mining and preprocessing  </b>
+											</li>
+											<li> <b>Exploratory Data Analysis</b>
+												
+											</li>
+											<li><b>Analyzing keyword in reviews</b>
+												<ul>
+													<li>Text processing</li>
+													<li>Drawing words clouds</li>
+												</ul>
+											</li>
+											<li><b>Building NLP models</b>
+												<ul>
+													<li>naive Bayes</li>
+													<li>XGBoost</li>
+													<li>LSTM</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ol>
+						
+								<b>My detail project: </b>
+									<ul style="list-style-type:decimal">
+										<li><b>Data mining and preprocessing </b>
+											<ul>
+												<li><b>Data mining</b>
+													<div class="image main"><img src="images_sentiment/data_description.png" alt="" /></div>
+													- Product_name: Name of the product.
+												<br>	- Product_price:Price of the product.
+												<br>	- Rate: Customer's rating on product(Between 1 to 5).
+												<br>	- Review: Customer's review on each product.
+												<br>	- Summary: This column includes descriptive information of customer's thoughts on each product.
+												<br>	- Sentiment: This column contains 3 labels such as Positive, Negative and Neutral(Which was given based on Summary).
+
+												</li>
+												<li><b>Data preprocessing</b>
+												<br>	- Drop null value of summary column	
+												<div class="image main"><img src="images_sentiment/remove_null.jpg" alt="" /></div>
+													- Convert the data type of rate and price column to numeric form
+													<pre><code>df1['Rate']=df1['Rate'].astype(int)</code></pre>
+													- Find and remove outliers and anomalies
+													<div class="image main"><img src="images_sentiment/remove_anomalies.png" alt="" /></div>
+													- Create more useful columns: convert sentiment to numeric form, create additional columns length_of_text: Create sentiment_num columns which use number 0, 1, 2 to represent the values: negative, neutral and positive respectively.
+													<pre><code>df1['Sentiment_num']=df1['Sentiment']
+df1.head()
+df1['Sentiment_num'].replace({'positive': 2, 'neutral': 1, 'negative':0}, inplace=True)
+df1.head()
+Create the length_of_text columns to counts how many words in a review
+df1['length_of_text'] = [len(i.split(' ')) for i in df1['Summary']]
+df1.head()
+</code></pre>
+												</li>
+											</ul>
+										</li>
+										<li> <b>Exploratory Data Analysis</b>
+											<div class="image main"><img src="images_sentiment/distribution_rating.png" alt="" /></div>
+											The number of 5-star ratings accounted for the most, 2-star ratings accounted for the least, and 1-star ratings ranked 3rd. That shows that most products satisfy customers. A few of them are not satisfied but have not reacted negatively yet (rate 2 instead of 1 star). The number of 1-star ratings is still high, businesses need to find out which products or industries receive the most 1-star reviews to make adjustments.
+											<div class="image main"><img src="images_sentiment/distribution_sentiment.png" alt="" /></div>
+											Because the number of 5-star ratings accounted for the most, the number of positive reviews also accounted for the most. Followed by negative reviews and neutral reviews. This further confirms that there are products that disappoint customers. Businesses need to find these products and improve them.
+											<div class="image main"><img src="images_sentiment/distribution_lengthtext.png" alt="" /></div>
+											The length of comments focuses on the range of 0-20 words. In particular, from the distribution chart, it can be seen that long reviews are negative reviews and shorter reviews are neutral or positive. This may explain that when customers give 1 star or negative reviews, sellers often ask students to provide more experiences so they can improve.
+										</li>
+										<li><b>Analyzing keywords in reviews</b>
+											<ul style="list-style-type:lower-alpha">
+												<li><b>Text processing</b>
+													<br>- Step 1: Remove punctuations
+													<pre><code># Removing Punctuations and Numbers from the Text
+def remove_punctuations_numbers(inputs):
+    return re.sub(r'[^a-zA-Z]', ' ', inputs)
+df1['Summary'] = df1['Summary'].apply(remove_punctuations_numbers)</code></pre>
+													- Step 2: Tokenize and remove stop words
+													<pre><code>#tokenize
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import word_tokenize
+df1['text_tokenized'] = df1['Summary'].apply(lambda x: word_tokenize(x))
+df1['text_tokenized']
+#create array of stopwords
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
+nltk.download('stopwords')
+# Define the remove_stop_word function
+def remove_stop_word(tokens):
+    stop_words = set(stopwords.words('english'))
+    filtered_tokens = [token for token in tokens if token.lower() not in stop_words]
+	return filtered_tokens</code></pre>
+	Stop words are common words that are often filtered out during text analysis because they are considered to carry less meaningful information compared to other words in a sentence. These words include articles (e.g., "the", "an", "a"), prepositions (e.g., "in", "on", "at"), conjunctions (e.g., "and", "but", "or"), and other frequently used words that don't contribute much to the core meaning of the text.
+												<pre><code># Assuming data['text_tokenized'] contains the tokenized text
+df1['no_stop_word'] = df1['text_tokenized'].apply(remove_stop_word)
+# Print the results
+df1['no_stop_word'].head()</code></pre>
+												- Step 3: Lemmatize
+												<br> Lemmatization is a text preprocessing technique used in natural language processing (NLP) to reduce words to their base or root form, known as the "lemma." For example, consider the words: "running," "ran," and "runs." After lemmatization, all these words would be reduced to their common lemma, "run."
+												<pre><code>#lemmatize
+import nltk
+from nltk.stem import WordNetLemmatizer
+nltk.download('wordnet')
+#Define a function to lemmatize
+lemmatizer = WordNetLemmatizer()
+def lemmatization(inputs):  # Ref.1
+    return [lemmatizer.lemmatize(word=kk, pos='v') for kk in inputs]
+df1['text_lemmatized'] = df1['no_stop_word'].apply(lemmatization)
+df1['text_lemmatized'].head()</code></pre>
+												</li>
+												<li><b>Drawing words clouds</b>
+													<div class="image main"><img src="images_sentiment/negative_reviews.png" alt="" /></div>
+													Common keywords in negative reviews include: small, bad, fan, size. These keywords indicate that customers are not satisfied with the cooling devices such as: cooler or fan, they are quite smaller than expected or of poor quality.
+													<div class="image main"><img src="images_sentiment/positive_reviews.png" alt="" /></div>
+													Popular keywords in positive reviews include: nice, good, air, cooler, excellent, great, amaze. These reviews show that customers have a good experience with the product. The keyword cooler appears in both positive and negative reviews because this is the main product of the business.
+												</li>
+											</ul>
+										</li>
+										<li><b>Further Analysis </b>
+											<ul style="list-style-type:lower-alpha">
+												<li><b>Naive Bayes</b>
+													<pre><code>prediction_nb = nb.predict(X_test)</code></pre>
+													Result:
+													<div class="image main"><img src="images_sentiment/result_naive_bayes.png" alt="" /></div>
+												</li>
+												<li><b>XGBoost</b>
+													<pre><code># X is the feature matrix, y is the label vector
+X_train, X_test, y1_train, y1_test = train_test_split(X, y1, test_size=0.2, stratify=y, random_state=42)
+prediction_xgb = xgb.XGBClassifier(objective='multi:softmax', num_class=3, random_state=42)</code></pre>
+													Result:
+													<div class="image main"><img src="images_sentiment/result_xgboost.png" alt="" /></div>
+												</li>
+												<li><b>LSTM</b>
+													<pre><code># Building the LSTM model
+model = Sequential()
+model.add(Embedding(vocab_size, 32, input_length=max_len))
+model.add(LSTM(64, dropout=0.2, recurrent_dropout=0.2))
+model.add(Dense(num_classes, activation='softmax'))</code></pre>
+													Result:
+													<div class="image main"><img src="images_sentiment/result_lstm.png" alt="" /></div>
+
+												</li>
+											</ul>
+										</li>
+										<li><b>Conclusion</b>
+											<ul style="list-style-type:lower-alpha">
+												<li><b>Exploration Data Analysis</b>
+													<ul>
+														<li>The number of 5-star ratings accounted for the most, 2-star ratings accounted for the least, and 1-star ratings ranked 3rd. That shows that most products satisfy customers. A few of them are not satisfied but have not reacted negatively yet (rate 2 instead of 1 star). The number of 1-star ratings is still high, businesses need to find out which products or industries receive the most 1-star reviews to make adjustments.</li>
+														<li>Because the number of 5-star ratings accounted for the most, the number of positive reviews also accounted for the most. Followed by negative reviews and neutral reviews. This further confirms that there are products that disappoint customers. Businesses need to find these products and improve them.</li>
+														<li>The length of comments focuses on the range of 0-20 words. In particular, from the distribution chart, it can be seen that long reviews are negative reviews and shorter reviews are neutral or positive. This may explain that when customers give 1 star or negative reviews, sellers often ask students to provide more experiences so they can improve.</li>
+														
+													</ul>
+												</li>
+												<li><b>Word Clouds</b>
+													<ul>
+														<li>Common keywords in negative reviews include: <u>small, bad, fan, size</u>. These keywords indicate that customers are not satisfied with the cooling devices such as: cooler or fan</li>
+														<li>Popular keywords in positive reviews include: <u>nice, good, air, cooler, excellent, great, amaze</u>. These reviews show that customers have a good experience with the products.</li>
+														<li>Common keywords in neutral reviews include: <u>overall, average or ok</u>. Show a neutral attitude towards the product.</li>
+													</ul>
+												</li>
+												<li><b>Text classification models comparison</b>
+													<ul>The results compare the accuracy of 3 models: Naïve Bayes, XGBoost and LSTM in text classification.
+														<li>Naïve Bayes: 0.89</li>
+														<li>XGBoost: 0.91</li>
+														<li>LSTM: 0.92</li>
+														It can be concluded that LSTM is better than Naïve Bayes and XGBoost in text classification.
+													</ul>
+												</li>
+												
+	
+											</ul>
+										</li>
+									</ul>
+								
+								
+								
+								<p>Here the full code and dataset I used</p>
+								<a href="https://github.com/nguyenngoctham02da/Reviews-Classification-using-Naive-Bayes-XGBoost-and-LSTM">Click here</a>
+
+							
+
+
+
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>Trung Thang Quater, Binh Thang Ward, Di An City<br />
+								Binh Duong Province</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">0961563804</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">nguyenngoctham.work.02@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
