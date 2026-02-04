@@ -35,8 +35,7 @@
 				<!-- <li><a href="elements.html">Elements Reference</a></li> -->
 			</ul>
 			<ul class="icons">
-				<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span
-							class="label">Facebook</span></a></li>
+				
 				<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/" class="icon brands fa-linkedin"><span
 							class="label">Instagram</span></a></li>
 				<li><a href="https://github.com/nguyenngoctham02da?tab=repositories" class="icon brands fa-github"><span
@@ -50,10 +49,10 @@
 			<!-- Post -->
 			<section class="post">
 				<header class="major">
-					<h1>Portfolio Overview</h1>
+					<h1>Phân tích dữ liệu kinh doanh toàn diện của công ty bán linh kiện xe đạp</h1>
 					<p>Business Analytics & Data-driven Decision Making</p>
 				</header>
-			
+
 				<h2>1. Input (Dataset Overview)</h2>
 				<p>
 					Portfolio này sử dụng <b>AdventureWorksDW2019</b>, một bộ dữ liệu mô phỏng hoạt động kinh doanh
@@ -64,14 +63,15 @@
 					Dữ liệu ghi nhận hàng trăm nghìn giao dịch trong nhiều năm, phản ánh đầy đủ vòng đời bán hàng
 					và hành vi khách hàng. Cụ thể, dữ liệu bao gồm:
 				</p>
-			
+
 				<ul>
 					<li>
 						<b>Thông tin đơn hàng:</b> ngày đặt hàng, số lượng, doanh thu, chi phí, lợi nhuận,
 						khuyến mãi, thuế và phí vận chuyển.
 					</li>
 					<li>
-						<b>Thông tin sản phẩm:</b> tên sản phẩm, danh mục, giá bán, chi phí chuẩn và các thuộc tính sản phẩm.
+						<b>Thông tin sản phẩm:</b> tên sản phẩm, danh mục, giá bán, chi phí chuẩn và các thuộc tính sản
+						phẩm.
 					</li>
 					<li>
 						<b>Thông tin khách hàng:</b>
@@ -85,17 +85,17 @@
 						cho phép so sánh chiến lược B2C và B2B.
 					</li>
 				</ul>
-			
+
 				<p>
 					Bộ dữ liệu này phù hợp để phân tích hiệu quả kinh doanh, hành vi khách hàng,
 					hiệu quả khuyến mãi và chiến lược tăng trưởng dài hạn.
 				</p>
-			
+
 				<hr />
-			
+
 				<h2>2. Analysis Objectives (Business Questions)</h2>
 				<p>Portfolio tập trung trả lời các câu hỏi kinh doanh trọng tâm sau:</p>
-			
+
 				<ul>
 					<li>
 						<b>Hiệu quả bán hàng</b>
@@ -136,12 +136,12 @@
 						</ul>
 					</li>
 				</ul>
-			
+
 				<hr />
-			
+
 				<h2>3. Process (Workflow)</h2>
 				<p>Quy trình phân tích được thực hiện theo các bước sau:</p>
-			
+
 				<ol>
 					<li>
 						<b>Data Sampling & Understanding</b><br />
@@ -260,6 +260,120 @@
 					<li>Chỉ mở rộng chiều “số lượng giao dịch”</li>
 					<li>Chất lượng đơn hàng và giá trị khách hàng đang suy giảm</li>
 				</ul>
+				<h6>Phân tích doanh thu và lợi nhuận</h6>
+				<p>Từ dashboard quan sát thấy một hiện tượng đáng chú ý: doanh thu B2C tăng trưởng theo thời gian trong
+					khi AOV (Average Order Value) lại giảm. Có ba giả thuyết chính có thể giải thích cho hiện tượng
+					“doanh thu tăng, AOV giảm”:
+				<ul>
+					<li>(1) thay đổi product mix</li>
+					<li>(2) chiến lược entry price</li>
+					<li>(3) chất lượng khách hàng suy giảm.
+					</li>
+				</ul>
+				<div class="image main">
+					<img src="images_adventures/b2c_diagram.png" alt="" />
+					<p style="font-size: 0.9em;">
+					</p>
+				</div>
+				</p>
+				<b>Giả thuyết 1: Thay đổi product mix</b>
+				<p>Trước hết, xét đến thay đổi product mix. Product mix có ảnh hưởng trực tiếp đến AOV vì AOV thực chất
+					là kết quả tổng hợp của giá bán và cơ cấu sản phẩm được mua. Khi tỷ trọng doanh thu dịch chuyển từ
+					các nhóm sản phẩm có giá trị cao sang các nhóm có giá trị thấp, AOV tổng thể sẽ giảm, ngay cả khi số
+					lượng đơn hàng và tổng doanh thu vẫn tăng.</p>
+				<p>Do giá và cấu trúc sản phẩm thay đổi theo thời gian, AOV được chuẩn hóa theo mặt bằng từng năm nhằm
+					phản ánh đúng tác động của mix shift, tránh bị nhiễu bởi lạm phát hoặc thay đổi giá bán.
+				<div class="image main">
+					<img src="images_adventures/b2c_statisAOV.png" alt="" />
+					<p style="font-size: 0.9em;">
+					</p>
+				</div>
+				</p>
+				<p>Kết quả cho thấy AOV giảm chủ yếu đến từ product mix shift:
+				<ul>
+					<li>tỷ trọng doanh thu tăng lên ở các subcategory có Static AOV thấp hơn mức trung bình năm</li>
+					<li>các subcategory có Static AOV cao lại giảm dần tỷ trọng theo thời gian</li>
+				</ul>
+				==> Điều này cho thấy doanh thu tăng chủ yếu nhờ bán được nhiều sản phẩm giá thấp hơn, chứ không phải
+				nhờ khách mua các sản phẩm giá trị cao.
+
+				</p>
+				<p>Về mặt kinh doanh, kết luận này hàm ý rằng danh mục sản phẩm đang mở rộng hoặc tăng trưởng ở phân
+					khúc “low-ticket”, trong khi các sản phẩm “core value” hoặc “premium” đang mất dần vai trò. Giải
+					pháp ở đây không đơn thuần là tăng giá, mà cần xem xét lại chiến lược danh mục: xác định rõ nhóm sản
+					phẩm nào là traffic driver và nhóm nào là value driver, đồng thời thiết kế các cơ chế cross-sell
+					hoặc bundle để kéo giá trị đơn hàng lên mà không làm giảm volume.
+
+				</p>
+				<b>Giả thuyết 2 hay 3: Chiến lược entry price hay là chất lượng khách hàng thấp</b>
+				<p>Tiếp theo là giả thuyết chiến lược entry price. Trong nhiều mô hình B2C, doanh nghiệp chấp nhận AOV
+					thấp ở đơn hàng đầu nhằm thu hút khách mới, sau đó bù lại bằng việc khách quay lại mua nhiều lần,
+					dẫn đến CLV (Customer Lifetime Value) cao hơn. Nếu AOV giảm do entry price, ta kỳ vọng sẽ thấy CLV
+					trung và dài hạn tăng, cùng với repeat rate ổn định hoặc cải thiện.
+				<table>
+					<thead>
+						<tr>
+							<th>Entry price</th>
+							<th>Chất lượng khách hàng thấp</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<ul>
+									<li>Đơn đầu nhỏ</li>
+									<li>Quay lại</li>
+									<li>CLV tăng</li>
+								</ul>
+							</td>
+							<td>
+								<li>Mua ít</li>
+								<li>Không quay lại</li>
+								<li>CLV giảm</li>
+							</td>
+
+						</tr>
+
+					</tbody>
+				</table>
+				<div class="image main">
+					<img src="images_adventures/b2c_repeatrate.png" alt="" />
+					<p style="font-size: 0.9em;">
+					</p>
+				</div>
+				</p>
+				<p>Tuy nhiên, khi phân tích CLV theo các mốc 12 tháng, 24 tháng và 36 tháng, có thể quan sát rõ rằng CLV
+					ở tất cả các mốc này đều giảm dần theo thời gian. Song song đó, repeat rate (được tính bằng tỷ lệ
+					khách mua từ 2 lần trở lên trên tổng số khách) cũng giảm liên tục. Điều này cho thấy khách hàng mới
+					không quay lại đủ nhiều để bù đắp cho AOV thấp ở đơn đầu.
+				</p>
+				<p>Kết quả này loại trừ khả năng AOV giảm là do chiến lược entry price có chủ đích. Thay vào đó, dữ liệu
+					cho thấy vấn đề nằm ở chất lượng khách hàng. Cụ thể, khách hàng mới có xu hướng mua đơn đầu nhỏ, sau
+					đó mua ít hoặc không quay lại, dẫn đến CLV ngắn hạn và dài hạn đều giảm. Đây là dấu hiệu của việc
+					tăng trưởng doanh thu đang dựa nhiều vào acquisition volume hơn là giá trị vòng đời khách hàng.
+				</p>
+				<p>
+					Từ góc độ kinh doanh, điều này tiềm ẩn rủi ro lớn: chi phí marketing có thể tăng nhưng hiệu quả dài
+					hạn giảm, và doanh thu trở nên phụ thuộc vào việc liên tục thu hút khách mới. Để cải thiện chất
+					lượng khách hàng B2C, một số hướng hành động có thể cân nhắc bao gồm:
+				<ul>
+					<li>rà soát lại các kênh acquisition để đánh giá kênh nào mang về khách có CLV cao hơn thay vì chỉ
+						tập trung vào volume;
+					</li>
+					<li>điều chỉnh thông điệp và ưu đãi cho khách mới theo hướng thu hút đúng nhóm khách mục tiêu, không
+						chỉ khách “săn giá rẻ”
+					</li>
+					<li> thiết kế các cơ chế thúc đẩy lần mua thứ hai sớm hơn, chẳng hạn như bundle thông minh, ưu đãi
+						có điều kiện, hoặc gợi ý sản phẩm liên quan ngay sau đơn hàng đầu
+					</li>
+					<li>phân biệt rõ chiến lược chăm sóc giữa khách giá trị cao và khách giá trị thấp để tối ưu chi phí
+						giữ chân.
+
+					</li>
+				</ul>
+				</p>
+
+				<h6>Phân tích vòng đời khách hàng</h6>
 				<p>Phân tích vòng đời mua hàng cho thấy phần lớn khách hàng chỉ phát sinh tối đa 1–3 lần mua, rất ít
 					khách hàng đi xa hơn mốc lần mua thứ 4. </p>
 				<div class="image main">
@@ -322,6 +436,7 @@
 				<div class="image main">
 					<img src="images_adventures/b2b_salesprofit.png" alt="" />
 				</div>
+				<h6>Hy sinh lợi nhuận có chủ đích hay chiến lược giá có vấn đề?</h6>
 				<p>
 					Để phân biệt giữa “hy sinh có chủ đích” và “chiến lược giá có vấn đề”, phân tích được thiết kế xoay
 					quanh hiệu quả dài hạn của các reseller được acquire trong giai đoạn khuyến mãi. Cụ thể:
@@ -357,14 +472,267 @@
 						nên tiếp tục đầu tư nuôi dưỡng, tái đàm phán điều khoản thương mại, hay chủ động loại bỏ những
 						mối quan hệ không mang lại giá trị dài hạn cho doanh nghiệp.</li>
 				</ul>
+				<h6>Sự khác biệt giữa reseller có ROI cao và reseller có ROI thấp</h6>
+				<p>Mục tiêu của phân tích Sales B2B là trả lời câu hỏi: <i>điều gì thực sự tạo ra sự khác biệt giữa
+						reseller có ROI cao và reseller có ROI thấp? </i>Thay vì chỉ nhìn vào doanh thu, phân tích tập
+					trung vào
+					hành vi mua, cấu trúc danh mục và chất lượng lợi nhuận.
+				</p>
+				<p>Các chỉ số được xây dựng xoay quanh ba nhóm chính: mức độ gắn bó (Number of Order, FrequencyIndex,
+					Recency), giá trị đơn hàng (AOV, AOP), và chất lượng danh mục (ROI, Weighted Margin, Subcategory
+					Breadth, Top1 Revenue Share).
 
+				</p>
+				<div class="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<th>Metric</th>
+								<th>Ý nghĩa</th>
+								<th>Cách tính</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><b>NumberOfOrder</b></td>
+								<td>Reseller mua thường xuyên hay không</td>
+								<td>COUNT(DISTINCT SalesOrderNumber)</td>
+							</tr>
+							<tr>
+								<td><b>FrequencyIndex</b></td>
+								<td>Tần suất mua cao hơn trung bình hay không</td>
+								<td>NumberOfOrder / AVG(NumberOfOrder)</td>
+							</tr>
+							<tr>
+								<td><b>AOV</b></td>
+								<td>Giá trị trung bình mỗi đơn hàng</td>
+								<td>Total Sales / NumberOfOrder</td>
+							</tr>
+							<tr>
+								<td><b>AOP</b></td>
+								<td>Lợi nhuận trung bình mỗi đơn hàng</td>
+								<td>Total Profit / NumberOfOrder</td>
+							</tr>
+							<tr>
+								<td><b>ROI</b></td>
+								<td>Chất lượng doanh thu</td>
+								<td>Total Profit / Total Sales</td>
+							</tr>
+							<tr>
+								<td><b>SubcategoryBreadth</b></td>
+								<td>Mức độ đa dạng danh mục sản phẩm đã mua</td>
+								<td>COUNT(DISTINCT Subcategory)</td>
+							</tr>
+							<tr>
+								<td><b>Top1RevenueShare</b></td>
+								<td>Mức độ phụ thuộc vào một sản phẩm</td>
+								<td>Top 1 Product Revenue / Total Revenue</td>
+							</tr>
+							<tr>
+								<td><b>Recency</b></td>
+								<td>Dấu hiệu churn / khoảng cách mua gần nhất</td>
+								<td>Today - LastOrderDate</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="image main">
+					<img src="images_adventures/onlcustomer_HighROIvsLowROI.png" alt="" />
+				</div>
+				<div class="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<th>Reseller Tier (Mean)</th>
+								<th>NumberOfOrder</th>
+								<th>ROI</th>
+								<th>FrequencyIndex</th>
+								<th>WeightedMargin</th>
+								<th>Top1RevenueShare</th>
+								<th>SubcategoryBreadth</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><b>High ROI</b></td>
+								<td>8</td>
+								<td>-0.02</td>
+								<td>1.34</td>
+								<td>-0.02</td>
+								<td>0.14</td>
+								<td>13.00</td>
+							</tr>
+							<tr>
+								<td><b>Low ROI</b></td>
+								<td>4</td>
+								<td>-0.06</td>
+								<td>0.67</td>
+								<td>-0.06</td>
+								<td>0.14</td>
+								<td>11.00</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<p>Thứ nhất, tần suất mua là yếu tố phân biệt quan trọng. Reseller ROI cao có số đơn hàng trung vị gấp
+					đôi nhóm ROI thấp (8 so với 4), đồng thời FrequencyIndex lớn hơn 1, trong khi nhóm ROI thấp nhỏ hơn
+					1. Điều này cho thấy reseller ROI cao không phải là những khách mua “to” hơn, mà là những khách mua
+					đều và thường xuyên hơn. Về mặt kinh doanh, tần suất cao giúp doanh nghiệp tận dụng tốt hơn chi phí
+					vận hành, logistics và quan hệ bán hàng, từ đó cải thiện lợi nhuận tổng thể.
+				</p>
+				<p>Thứ hai, độ rộng danh mục mua (Subcategory Breadth) có tương quan tích cực với ROI. Nhóm reseller ROI
+					cao mua đa dạng subcategory hơn so với nhóm ROI thấp. Điều này phản ánh hiệu quả của cross-sell
+					trong B2B: khi reseller mua nhiều nhóm sản phẩm khác nhau, doanh nghiệp có nhiều cơ hội đưa các sản
+					phẩm biên lợi nhuận cao vào trong giỏ hàng tổng thể, ngay cả khi các sản phẩm core có margin thấp.
+					Tuy nhiên, cần lưu ý rằng mức chênh lệch Subcategory Breadth giữa hai nhóm không quá lớn, cho thấy
+					cả hai nhóm nhìn chung đều mua tương đối đa dạng; điểm khác biệt nằm ở cách các danh mục đó đóng góp
+					vào doanh thu, chứ không chỉ số lượng danh mục.
+				</p>
+				<p>Thứ ba, AOV không phải là yếu tố quyết định ROI. Dữ liệu cho thấy AOV giữa hai nhóm không có sự khác
+					biệt rõ rệt, hàm ý rằng việc bán đơn hàng lớn hơn không đảm bảo tạo ra ROI cao hơn. Đây là một
+					insight quan trọng cho B2B: tập trung đẩy giá trị đơn hàng mà không kiểm soát mix lợi nhuận có thể
+					dẫn đến tăng doanh thu nhưng không cải thiện hiệu quả kinh doanh.
+				</p>
+				<p>Điểm cốt lõi và quan trọng nhất của toàn bộ phân tích nằm ở Weighted Margin, yếu tố được chứng minh
+					là driver chính của ROI. Mặc dù sự chênh lệch median Weighted Margin giữa hai nhóm không quá lớn về
+					mặt tuyệt đối, nhưng nó phản ánh sự khác biệt mang tính cấu trúc trong cách reseller phân bổ chi
+					tiêu giữa các nhóm sản phẩm.
+				</p>
+
+
+				<p>Ví dụ minh họa: Vì sao Weighted Margin là driver chính của ROI</p>
+
+				<b>Reseller A</b>
+
+				<div class="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<th>Subcategory</th>
+								<th>Revenue</th>
+								<th>Profit</th>
+								<th>Margin</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Bikes</td>
+								<td>100,000</td>
+								<td>5,000</td>
+								<td>5%</td>
+							</tr>
+							<tr>
+								<td>Accessories</td>
+								<td>10,000</td>
+								<td>3,000</td>
+								<td>30%</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<p><b>Total Revenue:</b> 110,000</p>
+				<p><b>Total Profit:</b> 8,000</p>
+
+				<p>
+					<b>Weighted Margin</b><br />
+					= Total Profit / Total Revenue<br />
+					= 8,000 / 110,000 = <b>7.27%</b>
+				</p>
+
+				<p><b>Diễn giải:</b></p>
+				<ul>
+					<li>Dù Accessories có margin rất cao (30%).</li>
+					<li>Doanh thu chủ yếu vẫn đến từ Bikes – nhóm sản phẩm có margin thấp.</li>
+					<li>Accessories không đủ “trọng lượng” để kéo margin tổng thể lên.</li>
+					<li>
+						→ ROI bị chi phối bởi nhóm sản phẩm core có margin thấp.
+					</li>
+				</ul>
+
+
+
+				<b>Reseller B</b>
+
+				<div class="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<th>Subcategory</th>
+								<th>Revenue</th>
+								<th>Profit</th>
+								<th>Margin</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Bikes</td>
+								<td>60,000</td>
+								<td>3,000</td>
+								<td>5%</td>
+							</tr>
+							<tr>
+								<td>Accessories</td>
+								<td>40,000</td>
+								<td>12,000</td>
+								<td>30%</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<p><b>Total Revenue:</b> 100,000</p>
+				<p><b>Total Profit:</b> 15,000</p>
+
+				<p>
+					<b>Weighted Margin</b><br />
+					= Total Profit / Total Revenue<br />
+					= 15,000 / 100,000 = <b>15%</b>
+				</p>
+
+				<p><b>Diễn giải:</b></p>
+				<ul>
+					<li>Doanh thu được phân bổ cân bằng hơn giữa Bikes và Accessories.</li>
+					<li>Nhóm sản phẩm margin cao chiếm tỷ trọng đủ lớn trong tổng mix.</li>
+					<li>
+						→ Kéo margin tổng thể lên đáng kể.
+					</li>
+					<li>
+						→ ROI cao hơn dù tổng doanh thu không vượt trội so với Reseller A.
+					</li>
+				</ul>
+
+
+
+				<b>Kết luận kinh doanh từ ví dụ trên</b>
+
+				<ul>
+					<li>ROI không phụ thuộc vào việc có bán sản phẩm margin cao hay không.</li>
+					<li>
+						ROI phụ thuộc vào <b>tỷ trọng doanh thu</b> của sản phẩm margin cao trong tổng product mix.
+					</li>
+					<li>
+						<b>Weighted Margin</b> phản ánh chất lượng doanh thu chính xác hơn so với chỉ nhìn AOV
+						hoặc tổng revenue.
+					</li>
+				</ul>
+
+				<p><b>Muốn nâng ROI B2B, cần:</b></p>
+				<ul>
+					<li>Giảm phụ thuộc vào sản phẩm core có margin thấp.</li>
+					<li>Chủ động điều hướng reseller sang các danh mục có margin cao hơn.</li>
+					<li>
+						Thiết kế incentive dựa trên <b>margin mix</b>, không chỉ dựa trên doanh thu tuyệt đối.
+					</li>
+				</ul>
 
 				<hr />
 
 				<h3>Customer Online (B2C) – Đông khách nhưng thiếu gắn bó</h3>
 				<i>Base khách hàng lớn nhưng tỷ lệ khách hàng giá trị cao thấp, retention chưa trở thành động lực tăng
 					trưởng.</i>
-
+				<h6>Phân tích RFM</h6>
 				<p>
 					Trong kênh B2C online, tổng số khách hàng khoảng 18.000 và được phân khúc bằng mô hình RFM theo tứ
 					phân vị, tập trung vào việc gom các tổ hợp hành vi tương đồng thành một số nhóm có thể hành động
@@ -381,6 +749,323 @@
 					khách hàng lớn nhưng thiếu chiều sâu, và phần lớn khách hàng chưa được dẫn dắt vào hành trình mua
 					lặp lại hoặc nâng cấp giá trị.
 				</p>
+				<h6>Phân tích sự chuyển dịch RFM</h6>
+				<p>Thay vì nhìn RFM tại một thời điểm cố định, phân tích tập trung trả lời câu hỏi:
+					<i>“Khi một khách hàng đã hình thành hành vi mua đủ ổn định trong 12 tháng, thì trong 3 tháng tiếp
+						theo
+						họ dịch chuyển giữa các nhóm RFM như thế nào?”</i>
+				</p>
+				<p>Mỗi khách hàng có mốc phân tích khác nhau:
+				<ul>
+					<li>FromMonth là tháng kết thúc rolling 12 tháng đầu tiên hợp lệ</li>
+					<li>ToMonth là 3 tháng sau FromMonth (chọn 3 tháng để phù hợp với rolling three month khi phân tích
+						retention rate ở dưới)
+					</li>
+				</ul>
+				<div class="table-wrapper">
+					<table>
+						<thead>
+							<tr>
+								<th>From \ To</th>
+								<th>At Risk</th>
+								<th>Champions</th>
+								<th>Loyal Customers</th>
+								<th>Others</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><b>At Risk</b></td>
+								<td>30%</td>
+								<td>11%</td>
+								<td>29%</td>
+								<td>30%</td>
+								<td>100%</td>
+							</tr>
+							<tr>
+								<td><b>Champions</b></td>
+								<td>31%</td>
+								<td>16%</td>
+								<td>25%</td>
+								<td>27%</td>
+								<td>100%</td>
+							</tr>
+							<tr>
+								<td><b>Loyal Customers</b></td>
+								<td>31%</td>
+								<td>18%</td>
+								<td>31%</td>
+								<td>20%</td>
+								<td>100%</td>
+							</tr>
+							<tr>
+								<td><b>Others</b></td>
+								<td>23%</td>
+								<td>11%</td>
+								<td>37%</td>
+								<td>29%</td>
+								<td>100%</td>
+							</tr>
+							<tr>
+								<td><b>Potential Loyalists</b></td>
+								<td>21%</td>
+								<td>29%</td>
+								<td>29%</td>
+								<td>21%</td>
+								<td>100%</td>
+							</tr>
+							<tr>
+								<td><b>Total</b></td>
+								<td><b>27%</b></td>
+								<td><b>13%</b></td>
+								<td><b>33%</b></td>
+								<td><b>27%</b></td>
+								<td><b>100%</b></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<ul>
+					<li>Sau khi đã đạt trạng thái giá trị cao, một tỷ lệ lớn khách hàng vẫn rơi xuống nhóm At Risk chỉ
+						sau 3 tháng. Cụ thể, khoảng 30–31% khách hàng từ nhóm Champions và Loyal Customers chuyển sang
+						At Risk. Điều này cho thấy sự suy giảm không đến từ nhóm khách mới hoặc giá trị thấp, mà đến từ
+						những khách hàng từng mua nhiều và mang lại giá trị cao.</li>
+					<li>Tỷ lệ dịch chuyển giữa các nhóm khá cao, cho thấy segment không cố định mà chịu ảnh hưởng mạnh
+						từ hành vi mua gần đây.</li>
+					<li>Nhóm Potential Loyalists có khả năng chuyển lên Champions cao nhất, là target ưu tiên cho
+						campaign kích hoạt.</li>
+					<li>Tỷ lệ quay về At Risk vẫn đáng kể ở mọi nhóm, nhấn mạnh vai trò của retention liên tục.</li>
+				</ul>
+				</p>
+				<h6>Phân tích chất lượng khách hàng (RFM based + Churn-Engagement-Value)</h6>
+				<b>1. Retention / Churn risk</b>
+				<p>Dựa trên Recency, khách hàng được phân loại thành Active và At Risk. Bảng phân bổ theo RFM Group cho
+					thấy:
+				<ul>
+					<li>Các nhóm giá trị cao như Loyal Customers và Big Spenders có tỷ lệ At Risk rất cao. Đây là tín
+						hiệu xấu vì nhóm này đóng góp doanh thu lớn nhưng đang rời bỏ hệ thống</li>
+					<li>Ngược lại, trong nhóm Others vẫn còn khoảng 13% khách hàng Active, cho thấy tiềm năng nurture
+						nếu có
+						chiến lược phù hợp</li>
+
+				</ul>
+				</p>
+				<p>==> Phân tích này cho thấy vấn đề không nằm ở việc thiếu khách hàng tốt, mà là khả năng giữ chân
+					khách
+					hàng giá trị đang yếu.</p>
+
+				<h3>Bảng phân bố RFM Group</h3>
+				<table border="1" cellpadding="5" cellspacing="0">
+					<tr>
+						<th>RFM Group</th>
+						<th>Active</th>
+						<th>At Risk</th>
+						<th>Total</th>
+						<th>At Risk %</th>
+					</tr>
+					<tr>
+						<td>Big Spenders</td>
+						<td>10.7%</td>
+						<td><strong>89.3%</strong></td>
+						<td>100.0%</td>
+						<td>89.3%</td>
+					</tr>
+					<tr>
+						<td>Champions</td>
+						<td>0.0%</td>
+						<td>100.0%</td>
+						<td>100.0%</td>
+						<td>100.0%</td>
+					</tr>
+					<tr>
+						<td>Hibernating</td>
+						<td>0.0%</td>
+						<td>100.0%</td>
+						<td>100.0%</td>
+						<td>100.0%</td>
+					</tr>
+					<tr>
+						<td>Loyal Customers</td>
+						<td>30.7%</td>
+						<td><strong>69.3%</strong></td>
+						<td>100.0%</td>
+						<td>69.3%</td>
+					</tr>
+					<tr>
+						<td>Others</td>
+						<td>13.9%</td>
+						<td>86.1%</td>
+						<td>100.0%</td>
+						<td>86.1%</td>
+					</tr>
+					<tr>
+						<td>Potential Loyalists</td>
+						<td>0.0%</td>
+						<td>100.0%</td>
+						<td>100.0%</td>
+						<td>100.0%</td>
+					</tr>
+					<tr>
+						<td><strong>Total</strong></td>
+						<td><strong>26.4%</strong></td>
+						<td><strong>73.6%</strong></td>
+						<td><strong>100.0%</strong></td>
+						<td><strong>73.6%</strong></td>
+					</tr>
+				</table>
+
+				<b>2. Engagement – Khách có mua đều hay không?</b>
+				<p>Engagement không được đo bằng số lần mua tuyệt đối, vì khách hàng cũ luôn có lợi thế hơn khách hàng
+					mới. Thay vào đó, FrequencyIndex được sử dụng để so sánh mức độ mua của từng khách hàng với trung
+					bình toàn bộ base.</p>
+				<p>Khi so sánh theo ROI tier:</p>
+				<div class="image main">
+					<img src="images_adventures/onlcustomer_frequencyindexbyROItier.png" alt="" />
+				</div>
+				<ul>
+					<li>Nhóm High ROI có FrequencyIndex khoảng 1.3</li>
+					<li>Nhóm Low ROI chỉ quanh mức 0.7</li>
+				</ul>
+
+				<p><strong>Điều này trả lời trực tiếp câu hỏi:</strong></p>
+				<p><em>ROI cao có đến từ việc mua thường xuyên hơn không?</em></p>
+				<p>→ <strong>Có.</strong> Trong B2C online, tần suất mua là một driver quan trọng của giá trị dài hạn.
+				</p>
+
+				<b>Có nên áp dụng phân tích ROI cho khách hàng B2C?</b>
+				<p>Câu trả lời là <strong>có</strong>, vì:</p>
+				<p>Trong bối cảnh B2C online:</p>
+				<ul>
+					<li>AOV thấp nên tăng trưởng không đến từ một đơn hàng lớn</li>
+					<li>Giá trị khách hàng đến từ mua lặp lại, mix sản phẩm và mix margin</li>
+				</ul>
+
+				<b>3. Value: Revenue cao nhưng ROI thấp</b>
+				<p>Bảng kết hợp RFM Group với Total Revenue và Median ROI cho thấy một insight quan trọng:</p>
+				<p>Một số nhóm đóng góp doanh thu rất lớn nhưng ROI trung vị lại thấp. Điều này cho thấy</strong> khách
+					hàng mua nhiều, nhưng tập trung vào các sản phẩm có margin
+					thấp</p>
+
+					<div class="image main">
+						<img src="images_adventures/onlcustomer_revenuevsROI.png" alt="" />
+					</div>
+				<ul>
+					<li>Nhóm At Risk có tổng revenue rất cao nhưng ROI chỉ ở mức trung bình thấp</li>
+					<li>Nhóm Champions và Loyal Customers cũng không có ROI vượt trội dù giá trị mua cao</li>
+				</ul>
+				<p>ROI không bị quyết định bởi việc mua nhiều hay ít</p>
+				<p>Top1RevenueShare giữa nhóm High ROI và Low ROI không chênh lệch đáng kể</p>
+				<p>→ Vấn đề không nằm ở việc phụ thuộc một sản phẩm, mà nằm ở mix margin của các sản phẩm được mua,
+					tương tự logic đã thấy trong phân tích B2B.</p>
+
+				<b>Bảng RFM Group - Revenue và ROI</b>
+				<table border="1" cellpadding="5" cellspacing="0">
+					<tr>
+						<th>RFMGroup</th>
+						<th>Total Revenue (Retail)</th>
+						<th>Median of ROI</th>
+					</tr>
+					<tr>
+						<td>Potential Loyalists</td>
+						<td>$83,084.10</td>
+						<td>0.626</td>
+					</tr>
+					<tr>
+						<td>Others</td>
+						<td>$6,495,223.00</td>
+						<td>0.457</td>
+					</tr>
+					<tr>
+						<td>Loyal Customers</td>
+						<td>$6,566,706.00</td>
+						<td>0.436</td>
+					</tr>
+					<tr>
+						<td>Hibernating</td>
+						<td>$106,685.80</td>
+						<td>0.626</td>
+					</tr>
+					<tr>
+						<td>Champions</td>
+						<td>$5,439,261.40</td>
+						<td>0.418</td>
+					</tr>
+					<tr>
+						<td>Big Spenders</td>
+						<td>$71,001.40</td>
+						<td>0.371</td>
+					</tr>
+					<tr>
+						<td>At Risk</td>
+						<td>$10,596,715.50</td>
+						<td>0.414</td>
+					</tr>
+				</table>
+
+				<b>Bảng ROI Tier vs Active/At Risk</b>
+				<table border="1" cellpadding="5" cellspacing="0">
+					<tr>
+						<th>ROITier</th>
+						<th>Active</th>
+						<th>At Risk</th>
+						<th>Total</th>
+					</tr>
+					<tr>
+						<td>High ROI</td>
+						<td>29.5%</td>
+						<td>70.5%</td>
+						<td>100.0%</td>
+					</tr>
+					<tr>
+						<td>Low ROI</td>
+						<td>23.3%</td>
+						<td>76.7%</td>
+						<td>100.0%</td>
+					</tr>
+					<tr>
+						<td><strong>Total</strong></td>
+						<td><strong>26.4%</strong></td>
+						<td><strong>73.6%</strong></td>
+						<td><strong>100.0%</strong></td>
+					</tr>
+				</table>
+
+				<b>Mối liên hệ giữa ROI và churn risk</b>
+				<p>Bảng ROITier × Active/At Risk cho thấy:</p>
+				<ul>
+					<li>Cả High ROI và Low ROI đều có tỷ lệ At Risk rất cao</li>
+					<li>High ROI không đồng nghĩa với việc khách hàng "an toàn" hơn về mặt retention</li>
+				</ul>
+
+				<p><strong>Insight này cho thấy:</strong></p>
+				<ol>
+					<li>ROI cao hiện tại không đảm bảo giá trị bền vững trong tương lai</li>
+					<li>Nếu không có chiến lược giữ chân, business vẫn có thể mất những khách hàng sinh lợi nhất</li>
+				</ol>
+
+				<b>Kết luận tổng thể cho Online Customer</b>
+				<p>Tổng hợp các phân tích cho thấy:</p>
+				<ul>
+					<li>Chất lượng khách hàng online đang suy giảm rõ rệt, thể hiện qua churn risk cao, CLV giảm và
+						repeat rate giảm</li>
+					<li>Một phần lớn doanh thu hiện tại đến từ các khách hàng có nguy cơ rời bỏ</li>
+					<li>ROI trong B2C được tạo ra bởi mua lặp lại và mix margin hợp lý, không đơn thuần là mua nhiều
+					</li>
+				</ul>
+
+				<b>Hàm ý và hướng hành động cho business</b>
+				<ul>
+					<li>Ưu tiên win-back cho Loyal Customers và Big Spenders đang At Risk thay vì chỉ tập trung
+						acquisition</li>
+					<li>Thiết kế CRM và recommendation theo hướng điều hướng khách hàng sang các sản phẩm có margin cao
+						hơn</li>
+					<li>Theo dõi RFM transition theo chu kỳ 3 tháng để phát hiện sớm sự suy giảm chất lượng khách hàng
+					</li>
+					<li>Đưa ROI, FrequencyIndex và churn risk vào dashboard customer performance như các chỉ số lõi,
+						thay vì chỉ nhìn revenue và AOV</li>
+				</ul>
+				<h6>Phân tích Retention rate</h6>
 				<p>Phân tích retention rate theo rolling three months cho thấy trước năm 2020, gần như không có khách
 					hàng quay lại, và chỉ từ đầu năm 2020 trở đi retention mới bắt đầu tăng mạnh. Điều này có thể phản
 					ánh sự thay đổi mang tính cấu trúc trong mô hình kinh doanh, sản phẩm hoặc hành vi thị trường, chẳng
@@ -406,6 +1091,7 @@
 					việc không mua trong 1–2 tháng không đồng nghĩa với churn.
 
 				</p>
+
 
 
 
@@ -955,13 +1641,8 @@
 			</section>
 			<section class="split contact">
 				<section class="alt">
-					<h3>Address</h3>
-					<p>Trung Thang Quater, Binh Thang Ward, Di An City<br />
-						Binh Duong Province</p>
-				</section>
-				<section>
-					<h3>Phone</h3>
-					<p><a href="#">0961563804</a></p>
+					<h3>Address: </h3>
+					<p>Ho Chi Minh City</p>
 				</section>
 				<section>
 					<h3>Email</h3>
@@ -970,8 +1651,7 @@
 				<section>
 					<h3>Social</h3>
 					<ul class="icons alt">
-						<li><a href="https://www.facebook.com/shen.2703/" class="icon brands fa-facebook-f"><span
-									class="label">Facebook</span></a></li>
+						
 						<li><a href="https://www.linkedin.com/in/tham-nguyen-462451206/"
 								class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
 						<li><a href="https://github.com/nguyenngoctham02da?tab=repositories"
